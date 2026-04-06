@@ -2,9 +2,9 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy pre-installed dependencies
-COPY node_modules ./node_modules
+# Install dependencies in the image
 COPY package*.json ./
+RUN npm ci --omit=dev
 
 # Copy application source
 COPY server.js ./
