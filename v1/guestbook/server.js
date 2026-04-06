@@ -221,7 +221,7 @@ process.on('SIGINT', async () => {
 async function startServer() {
   await initRedis();
   
-  app.listen(PORT, () => {
+  app.listen(PORT, '0.0.0.0', () => {
     console.log(`Guestbook server is running on port ${PORT}`);
     console.log(`Visit http://localhost:${PORT} to view the application`);
   });
