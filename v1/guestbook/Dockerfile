@@ -2,15 +2,12 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Install dependencies in the image
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm install --omit=dev
 
-# Copy application source
 COPY server.js ./
 COPY public ./public/
 
-# Create non-root user
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S nodeuser -u 1001
 
